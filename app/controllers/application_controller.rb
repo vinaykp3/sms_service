@@ -1,8 +1,17 @@
 # require 'lib/error_handler'
 class ApplicationController < ActionController::API
-  include ErrorHandler
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   before_action :authenticate
+
+  rescue_from ActionController::RoutingError, :with => :render_not_found
+
+  def routing_error
+    raise ActionController::RoutingError.new(params[:path])
+  end
+
+  def render_not_found
+    render status: 405
+  end
 
   private
 

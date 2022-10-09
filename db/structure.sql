@@ -116,11 +116,11 @@ ALTER TABLE ONLY phone_number ALTER COLUMN id SET DEFAULT nextval('phone_number_
 --
 
 COPY account (id, auth_id, username) FROM stdin (DELIMITER ',');
-1,   20S0KPNOIM,  azr1
-2,   54P2EOKQ47,  azr2
-3,   9LLV6I4ZWI,  azr3
-4,   YHWE3HDLPQ,  azr4
-5,   6DLH8A25XZ,  azr5
+1,20S0KPNOIM,azr1
+2,54P2EOKQ47,azr2
+3,9LLV6I4ZWI,azr3
+4,YHWE3HDLPQ,azr4
+5,6DLH8A25XZ,azr5
 \.
 
 

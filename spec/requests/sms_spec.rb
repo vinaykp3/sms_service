@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Sms", type: :request do
 
   before :each do
-    @account = create(:account)
+    @account = create(:account, id: 123)
   end
 
   describe "GET /inbound" do
@@ -132,7 +132,7 @@ RSpec.describe "Sms", type: :request do
 
     it "returns unknown failure error" do
       ph = create(:phone_number, account_id: @account.id)
-      allow(CacheKeys).to receive(:fetch).and_raise("test")
+      allow(Rails).to receive(:cache).and_raise("test")
       post "/outbound/sms", headers: { 'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Basic.encode_credentials(@account.username, @account.auth_id) }, params: { from: ph.number, to: "78667788", text: "check" }
       data = JSON.parse(response.body)
       expect(data["error"]).to eq("unknown failure")

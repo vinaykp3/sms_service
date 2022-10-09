@@ -19,7 +19,7 @@ class OutboundProcessor < Base
 
   def set_outbound_count
     key = CacheKeys::SMS_OUTBOUND_COUNT % { :date => Date.today, :from => params[:from] }
-    value = CacheKeys.fetch(key)
+    value = CacheKeys.fetch(key).to_i
     value += 1
     Rails.cache.write(key, value, expires_in: (Date.current.end_of_day - Time.now).to_i)
   end

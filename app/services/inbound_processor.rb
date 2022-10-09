@@ -7,8 +7,14 @@ class InboundProcessor < Base
     InboundValidator.new(params, account, "to").validate
     set_cache_for_stop
     message("inbound sms ok", "")
-  rescue => e
+  rescue Exceptions::InvalidParams => e
     message("", e.message)
+  rescue Exceptions::ParamMissing => e
+    message("", e.message)
+  rescue Exceptions::InvalidData => e
+    message("", e.message)
+  rescue => e
+    message("", "unknown failure")
   end
 
   def set_cache_for_stop

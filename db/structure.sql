@@ -115,7 +115,7 @@ ALTER TABLE ONLY phone_number ALTER COLUMN id SET DEFAULT nextval('phone_number_
 -- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY account (id, auth_id, username) FROM stdin;
+COPY account (id, auth_id, username) FROM stdin (DELIMITER ',');
 1,   20S0KPNOIM,  azr1
 2,   54P2EOKQ47,  azr2
 3,   9LLV6I4ZWI,  azr3
@@ -135,7 +135,7 @@ SELECT pg_catalog.setval('account_id_seq', 5, true);
 -- Data for Name: phone_number; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY phone_number (id, number, account_id) FROM stdin;
+COPY phone_number (id, number, account_id) FROM stdin (DELIMITER ',');
 1   4924195509198   1
 2   4924195509196   1
 3   4924195509197   1

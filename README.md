@@ -36,6 +36,7 @@ rails db < schema.sql
 * How to run the test suite
 ```sh
 RAILS_ENV=test rails db < schema.sql
+rspec spec
 ```
 
 * Services (job queues, cache servers, search engines, etc.)
@@ -44,8 +45,8 @@ RAILS_ENV=test rails db < schema.sql
 ```sh
 heroku create --stack heroku-20
 git push heroku master
-heroku rails db < schema.sql
+heroku pg:psql < db/structure.sql
 ```
 * ...
 # sms_service
-https://safe-sierra-71050.herokuapp.com/ | https://git.heroku.com/safe-sierra-71050.git
+https://safe-sierra-71050.herokuapp.com

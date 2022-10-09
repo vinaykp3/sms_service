@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Sms", type: :request do
 
-  before(:each) do
+  before :each do
     @account = create(:account)
   end
 

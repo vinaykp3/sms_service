@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe PhoneNumber, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe "associations" do
+  	it "should belong to account" do
+  		assc = described_class.reflect_on_association(:account)
+      expect(assc.macro).to eq :belongs_to
+  	end
+  end
+
 end

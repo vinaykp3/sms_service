@@ -9,4 +9,6 @@ module Exceptions
   end
 
   class InvalidParams < Base; end
+  class ParamMissing < Base; end
+  class InvalidData < Base; end
 end

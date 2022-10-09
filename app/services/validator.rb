@@ -16,10 +16,12 @@ class Validator
 		valid_phone_number?
 	end
 
+	private
+
 	def parameter_missing?
 		missing_params = REQUIRED_PARAMETERS - params.keys
 		message = "#{missing_params.first} is missing"
-		raise Exceptions::InvalidParams.new(message) if missing_params.present?
+		raise Exceptions::ParamMissing.new(message) if missing_params.present?
 	end
 
 	def invalid_parameter?
@@ -41,6 +43,6 @@ class Validator
 		number = (@sms_for == "to" ? params[:to] : params[:from])
 		phone_number = account.phone_numbers.find_by(number: number)
 		message = "#{@sms_for} parameter not found"
-		raise Exceptions::InvalidParams.new(message) if !phone_number
+		raise Exceptions::InvalidData.new(message) if !phone_number
 	end
 end

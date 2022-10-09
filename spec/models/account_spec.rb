@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "associations" do
+  	it "should has_many phonenumbers" do
+  		assc = described_class.reflect_on_association(:phone_numbers)
+      expect(assc.macro).to eq :has_many
+  	end
+  end
 end

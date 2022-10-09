@@ -9,9 +9,11 @@ class OutboundValidator < Validator
 		invalid_hit?
 	end
 
+	private
+
 	def is_stopped_number?
 		message = "sms from #{params[:from]} to #{params[:to]} blocked by STOP request"
-		raise Exceptions::InvalidParams.new(message) if stopped_number
+		raise Exceptions::InvalidData.new(message) if stopped_number
 	end
 
 	def stopped_number
@@ -21,7 +23,7 @@ class OutboundValidator < Validator
 
 	def invalid_hit?
 		message = "limit reached for from #{params[:from]}"
-		raise Exceptions::InvalidParams.new(message) if number_of_outbounds == 50
+		raise Exceptions::InvalidData.new(message) if number_of_outbounds == 50
 	end
 
 	def number_of_outbounds

@@ -6,6 +6,8 @@ sms_service is POC for the inbound and outbound sms messages, here used in memor
 
 * System dependencies
 ```sh
+Please install the following requirements in the system locally
+
 RVM - ruby version manager - https://rvm.io/rvm/install
 Redis server - https://redis.io/docs/getting-started/
 POSTGRES DB - https://www.postgresql.org/download/
@@ -43,6 +45,21 @@ rspec spec
 heroku create --stack heroku-20
 git push heroku master
 heroku pg:psql < db/structure.sql
+```
+
+* API endpoints
+```sh
+https://safe-sierra-71050.herokuapp.com/inbound/sms
+https://safe-sierra-71050.herokuapp.com/outbound/sms
+
+please refer the schema.sql for Basic authentication values from account table.
+
+PARAMETERS:
+{
+    "from": "4924195509196",
+    "to": "4924195509198",
+    "text": "any"
+}
 ```
 * ...
 # sms_service

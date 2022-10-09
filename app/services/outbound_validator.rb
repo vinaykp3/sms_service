@@ -18,7 +18,7 @@ class OutboundValidator < Validator
 
   def stopped_number
     key = CacheKeys::STOP_SMS_DATA % { :from => params[:from], :to => params[:to] }
-    Rails.cache.read(key)
+    CacheKeys.fetch(key)
   end
 
   def invalid_hit?
@@ -28,7 +28,7 @@ class OutboundValidator < Validator
 
   def number_of_outbounds
     key = CacheKeys::SMS_OUTBOUND_COUNT % { :date => Date.today, :from => params[:from] }
-    Rails.cache.read(key)
+    CacheKeys.fetch(key)
   end
 
 end

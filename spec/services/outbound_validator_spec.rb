@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe OutboundValidator do
   describe "should vaidate and raise the exceptions for invalid data" do
     before :each do
-      @account = create(:account)
+      @account = create(:account, id: 345)
     end
 
     describe "validate the outbound messages" do

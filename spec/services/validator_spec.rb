@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Validator do
   describe "should vaidate and raise the exceptions for invalid data" do
     before :each do
-      @account = create(:account)
+      @account = create(:account, id: 456)
     end
 
     context "should raise the exceotion for params missing" do

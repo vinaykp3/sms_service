@@ -3,6 +3,9 @@
 sms_service is POC for the inbound and outbound sms messages, here used in memory store which can be replaced later with any other storages like redis etc. Here added the steps to be followed for up and running the app locally or in heroku.
 
 * Ruby version
+```sh
+2.7.6
+```
 
 * System dependencies
 ```sh
